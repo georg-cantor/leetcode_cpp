@@ -32,9 +32,9 @@
 //using namespace std;
 
 class Solution {
-public:
-    int maxSubArray(std::vector<int>& nums) {
-        int maxSum = 0;
+ public:
+  int maxSubArray(std::vector<int> &nums) {
+    int maxSum = 0;
     for (int i = 0; i < nums.size(); ++i) {
       for (int j = i; j < nums.size(); ++j) {
         int thisSum = 0;
@@ -46,6 +46,6 @@ public:
         }
       }
     }
-    return maxSum;        
-    }
+    return maxSum;
+  }
 };
