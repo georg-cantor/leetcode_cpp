@@ -58,7 +58,7 @@
 // @lc code=start
 class Solution {
 public:
-    int uniqueMorseRepresentations(vector<string>& words) {
+    int uniqueMorseRepresentations(std::vector<std::string>& words) {
 
         
     }
