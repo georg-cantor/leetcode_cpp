@@ -6,6 +6,12 @@
 TEST_CASE("test 53", "[maximum-subarray]") {
   Solution s;
   std::vector<int> in = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-  int ans = 7;
+  std::vector<int> in2 = {4, -3, 5, -2, -1, 2, 6, -2};
+  std::vector<int> in3 = {-1};
+  int ans = 6;
+  int ans2 = 11;
+  int ans3 = -1;
   REQUIRE(s.maxSubArray(in) == ans);
+  REQUIRE(s.maxSubArray(in2) == ans2);
+  REQUIRE(s.maxSubArray(in3) == ans3);
 }

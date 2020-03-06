@@ -34,6 +34,10 @@
 class Solution {
  public:
   int maxSubArray(std::vector<int> &nums) {
+    return maxSumRec(nums, 0, nums.size()-1);
+  }
+  /*
+  int maxSubArray(std::vector<int> &nums) {
     int maxSum = 0;
     for (int i = 0; i < nums.size(); ++i) {
       for (int j = i; j < nums.size(); ++j) {
@@ -47,5 +51,42 @@ class Solution {
       }
     }
     return maxSum;
+  }
+   */
+ private:
+  int max3(int a, int b, int c) {
+    int max_ab = (a > b ? a : b);
+    return (max_ab > c ? max_ab : c);
+  }
+  int maxSumRec(std::vector<int> &a, int left, int right) {
+    if (left == right) {
+      if (a[left] > 0) {
+        return a[left];
+      } else {
+        return 0;
+      }
+    }
+
+    int center = (left + right) / 2;
+    int maxLeftSum = maxSumRec(a, left, center);
+    int maxRightSum = maxSumRec(a, center+1, right);
+
+    int maxLeftBorderSum = 0, leftBorderSum = 0;
+    for (int i = center; i >= left; --i) {
+      leftBorderSum += a[i];
+      if (leftBorderSum > maxLeftBorderSum) {
+        maxLeftBorderSum = leftBorderSum;
+      }
+    }
+
+    int maxRightBorderSum = 0, rightBorderSum = 0;
+    for (int i = center + 1; i <= right; ++i) {
+      rightBorderSum += a[i];
+      if (rightBorderSum > maxRightBorderSum) {
+        maxRightBorderSum = rightBorderSum;
+      }
+    }
+
+    return max3(maxLeftSum, maxRightSum, maxLeftBorderSum + maxRightBorderSum);
   }
 };
