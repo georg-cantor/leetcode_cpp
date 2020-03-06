@@ -59,8 +59,60 @@
 class Solution {
 public:
     int uniqueMorseRepresentations(std::vector<std::string>& words) {
+        load_morse();
+        std::map<const std::string, int> morseWords;
+        for (std::string word: words) {
+            auto morseWord = morseEncoding(word);
+            morseWords.insert_or_assign(morseWord,
+                    morseWords.find(morseWord) != morseWords.end() ? morseWords[morseWord] + 1 : 1);
+        }
+        return morseWords.size();
+    }
 
-        
+private:
+    std::map<const char, std::string> morseMap;
+    std::vector<char> notFoundItems;
+    void load_morse (){
+        morseMap['a'] = ".-";
+        morseMap['b'] = "-...";
+        morseMap['c'] = "-.-.";
+        morseMap['d'] = "-..";
+        morseMap['e'] = ".";
+        morseMap['f'] = "..-.";
+        morseMap['g'] = "--.";
+        morseMap['h'] = "....";
+        morseMap['i'] = "..";
+        morseMap['j'] = ".---";
+        morseMap['k'] = "-.-";
+        morseMap['l'] = ".-..";
+        morseMap['m'] = "--";
+        morseMap['n'] = "-.";
+        morseMap['o'] = "---";
+        morseMap['p'] = ".--.";
+        morseMap['q'] = "--.-";
+        morseMap['r'] = ".-.";
+        morseMap['s'] = "...";
+        morseMap['t'] = "-";
+        morseMap['u'] = "..-";
+        morseMap['v'] = "...-";
+        morseMap['w'] = ".--";
+        morseMap['x'] = "-..-";
+        morseMap['y'] = "-.--";
+        morseMap['z'] = "--..";
+    }
+    std::string morseEncoding(std::string &word) {
+        std::string morseRepresentation{};
+        for (std::string::iterator it=word.begin(); it!=word.end(); ++it) {
+            if (morseMap.find(*it) == morseMap.end())
+            {
+                //item was not found in the list
+                //store it in a vector to report back to user
+                notFoundItems.push_back(*it);
+            } else {
+                morseRepresentation += morseMap.find(*it)->second;
+            }
+        }
+        return morseRepresentation;
     }
 };
 // @lc code=end
