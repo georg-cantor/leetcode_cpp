@@ -34,6 +34,19 @@
 class Solution {
 public:
     int maxSubArray(std::vector<int> &nums) {
+        int thisSum = nums[0];
+        int maxSum = thisSum;
+
+        for (int j = 1; j < nums.size(); ++j) {
+            thisSum = (thisSum >= 0) ? (thisSum + nums[j]) : nums[j];
+            if (thisSum >= maxSum) {
+                maxSum = thisSum;
+            }
+        }
+
+        return maxSum;
+    }
+    int maxSubArray2(std::vector<int> &nums) {
         return maxSumRec(nums, 0, nums.size() - 1);
     }
     /*
