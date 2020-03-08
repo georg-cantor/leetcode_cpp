@@ -27,10 +27,10 @@ if [ ! -n "$1" ]; then
 else
     PROBLEM_NUM=$1
     leetcode show ${PROBLEM_NUM} -gx -l cpp -o ${CPP_SRC_DIR} > ${DOCS_DIR}/${PROBLEM_NUM}.md
-    NEW_CPP_FILE=$(ls ${CMAKE_SOURCE_DIR}/include/solutions | grep ${PROBLEM_NUM})
+    NEW_CPP_FILE=$(ls -AUt ${CMAKE_SOURCE_DIR}/include/solutions | grep -v '^total' | head -n 1)
     PROBLEM_DESC=$(echo ${NEW_CPP_FILE} | sed 's/.cpp//g')
     NEW_HPP_FILE=$(echo ${NEW_CPP_FILE} | sed 's/.cpp/.hpp/g')
-    mv ${CPP_SRC_DIR}/${NEW_CPP_FILE} ${CPP_SRC_DIR}/${NEW_HPP_FILE}
+    mv  ${CPP_SRC_DIR}/${NEW_CPP_FILE} ${CPP_SRC_DIR}/${NEW_HPP_FILE}
 fi
 NEW_TEST_FILE=test${NEW_CPP_FILE}
 cp -f ${CMAKE_SOURCE_DIR}/templates/test_template.cpp ${TEST_SRC_DIR}/${NEW_TEST_FILE}
