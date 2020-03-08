@@ -73,11 +73,11 @@ public:
         int first = 0;
         int last = first+1;
         while (last < len) {
-            if (nums[last] == nums[first]) {
-                last++;
-            } else {
-                nums[++first] = nums[last++];
-            }
+          if (nums[last]==nums[first]) {
+            last++;
+          } else {
+            nums[++first] = nums[last++];
+          }
         }
         traceArr.resize(first+1);
         for (int i = 0; i < first+1; i++) {
