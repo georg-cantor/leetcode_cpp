@@ -1,39 +1,16 @@
 #include <solutions/lib.hpp>
-#include <cmath>
+
+TreeNode* generateTreeRec(std::vector& arr, int left) {
+    if (arr[left] <= 0 || left >= arr.size()) {
+        return nullptr;
+    }
+    TreeNode* node = new TreeNode{arr[left]};
+    node->left  = generateTreeRec(arr, 2*left+1);
+    node->right = generateTreeRec(arr, 2*left+2);
+}
 
 TreeNode* generateTreeFromArr(std::vector& arr) {
-    int floor = 0, count = 0;
-    TreeNode* treeNodes = new TreeNode[arr.size()];
-    while (arr != null && count < array.length) {
-        int start = (int) std::pow(2, floor) - 1;
-        int end = (int) Math.pow(2, floor + 1) - 1;
-        if (end > array.length) {
-            end = array.length;
-        }
-        for (int i = start; i < end; i++) {
-            if (array[i] != null) {
-                treeNodes[i] = new TreeNode(array[i]);
-            } else {
-                treeNodes[i] = null;
-            }
-            if (i > 0) {
-                int parent = (i - 1) / 2;
-                if (parent >= 0) {
-                    TreeNode pNode = treeNodes[parent];
-                    if (pNode != null) {
-                        if (i % 2 == 1) {
-                            pNode.left = treeNodes[i];
-                        } else {
-                            pNode.right = treeNodes[i];
-                        }
-                    }
-                }
-            }
-            count++;
-        }
-        floor++;
-    }
-    return treeNodes[0];
+    return generateTreeRec(arr, 0);
 }
 
 unsigned int Factorial(unsigned int number) {

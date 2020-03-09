@@ -1,12 +1,12 @@
 #pragma once
 
-class TreeNode {
+struct TreeNode {
+    TreeNode(const int x) : val{ x } {}
     int val;
-    TreeNode left;
-    TreeNode right;
-    TreeNode(int x) { val = x; }
+    TreeNode* left;
+    TreeNode* right;
 }
 
-TreeNode generateTreeFromArr(std::vector& arr);
+TreeNode* generateTreeFromArr(std::vector& arr);
 
 unsigned int Factorial(unsigned int number);
