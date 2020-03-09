@@ -1,15 +1,16 @@
 #include <solutions/lib.hpp>
 
-TreeNode* generateTreeRec(std::vector& arr, int left) {
+TreeNode* generateTreeRec(std::vector<int>& arr, int left) {
     if (arr[left] <= 0 || left >= arr.size()) {
         return nullptr;
     }
     TreeNode* node = new TreeNode{arr[left]};
     node->left  = generateTreeRec(arr, 2*left+1);
     node->right = generateTreeRec(arr, 2*left+2);
+    return node;
 }
 
-TreeNode* generateTreeFromArr(std::vector& arr) {
+TreeNode* generateTreeFromArr(std::vector<int>& arr) {
     return generateTreeRec(arr, 0);
 }
 

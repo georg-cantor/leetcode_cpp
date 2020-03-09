@@ -36,12 +36,7 @@
  */
 
 // @lc code=start
-struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-};
+
 
 class Solution {
 public:
@@ -53,10 +48,6 @@ public:
             int rightDepth = maxDepth(root->right);
             return (leftDepth >= rightDepth) ? (leftDepth+1) : (rightDepth+1);
         }
-    }
-private:
-    generateTree(std::vector& vec) {
-
     }
 };
 // @lc code=end
