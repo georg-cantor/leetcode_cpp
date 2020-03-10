@@ -51,8 +51,25 @@
  */
 class Solution {
 public:
-    vector<vector<int>> levelOrder(TreeNode* root) {
-        
+    std::vector<std::vector<int>> levelOrder(TreeNode* root) {
+        std::vector<std::vector<int>> nodes;
+        insertNode(nodes, root, 0);
+        return nodes;
+    }
+private:
+    void insertNode(std::vector<std::vector<int>>& nodes, TreeNode* node, int level) {
+        if (node == nullptr) return;
+        if (nodes.size() <= level) {
+            std::vector<int> a{};
+            nodes.push_back(a);
+        }
+        nodes[level].push_back(node->val);
+        if (node->left != nullptr) {
+            insertNode(nodes, node->left, level+1);
+        }
+        if (node->right != nullptr) {
+            insertNode(nodes, node->right, level+1);
+        }
     }
 };
 // @lc code=end
