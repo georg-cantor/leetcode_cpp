@@ -47,6 +47,13 @@ TreeNode* build_from_level_order(std::vector<int>& arr) {
   return root;
 }
 
+void destroyTree(TreeNode* root) {
+    if (root == nullptr) return;
+    destroyTree(root->left);
+    destroyTree(root->right);
+    delete root;
+}
+
 unsigned int Factorial(unsigned int number) {
   return number > 1 ? Factorial(number - 1) * number : 1;
 }

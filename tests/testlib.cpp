@@ -11,9 +11,13 @@ TEST_CASE("Factorials are computed", "[factorial]") {
     std::vector<int> in1{1,2,3,-1,-1,4,5};
     std::vector<int> in2{1,2,3,-1,-1,4,5,-1,-1,6,7,8,9};
     REQUIRE(Factorial(1) == 1);
-    show(build_from_level_order(in1), 0);
+    TreeNode* tree = build_from_level_order(in1);
+    show(tree, 0);
+    destroyTree(tree);
     std::cout << "============================================" << std::endl;
-    show(build_from_level_order(in2), 0);
+    tree = build_from_level_order(in2);
+    show(tree, 0);
+    destroyTree(tree);
     /*
     REQUIRE(Factorial(1) == 1);
     REQUIRE(Factorial(2) == 2);
