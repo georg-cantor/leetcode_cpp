@@ -13,7 +13,7 @@ void printNode(int val, int h);
 
 void show(TreeNode* x, int h);
 
-TreeNode* build_from_level_order(std::vector<int> arr);
+TreeNode* build_from_level_order(std::vector<int>& arr);
 
 
 
