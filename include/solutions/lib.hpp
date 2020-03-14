@@ -25,6 +25,7 @@ void destroyTree(TreeNode*);
 ListNode* build_from_vec(std::vector<int>& arr);
 void destroyList(ListNode*);
 void printList(ListNode*);
+std::vector<int> list_to_vector(ListNode*);
 
 
 

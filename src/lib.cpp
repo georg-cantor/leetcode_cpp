@@ -81,6 +81,15 @@ void destroyList(ListNode* t) {
     }
 }
 
+std::vector<int> list_to_vector(ListNode* t) {
+    std::vector<int> result{};
+    while (t != nullptr) {
+        result.push_back(t->val);
+        t = t->next;
+    }
+    return result;
+}
+
 unsigned int Factorial(unsigned int number) {
   return number > 1 ? Factorial(number - 1) * number : 1;
 }
