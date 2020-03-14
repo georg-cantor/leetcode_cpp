@@ -9,12 +9,22 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
+struct ListNode {
+  int val;
+  ListNode *next;
+  ListNode(int x) : val(x), next(nullptr) {}
+};
+
 void printNode(int val, int h);
 
 void show(TreeNode* x, int h);
 
 TreeNode* build_from_level_order(std::vector<int>& arr);
 void destroyTree(TreeNode*);
+
+ListNode* build_from_vec(std::vector<int>& arr);
+void destroyList(ListNode*);
+void printList(ListNode*);
 
 
 

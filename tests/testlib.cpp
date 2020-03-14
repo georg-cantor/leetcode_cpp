@@ -23,6 +23,10 @@ TEST_CASE("Factorials are computed", "[factorial]") {
     tree = build_from_level_order(in3);
     show(tree, 0);
     destroyTree(tree);
+    std::cout << "============================================" << std::endl;
+    ListNode* testList = build_from_vec(in1);
+    printList(testList);
+    destroyList(testList);
     /*
     REQUIRE(Factorial(1) == 1);
     REQUIRE(Factorial(2) == 2);

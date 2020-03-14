@@ -55,6 +55,32 @@ void destroyTree(TreeNode* root) {
     delete root;
 }
 
+ListNode* build_from_vec(std::vector<int>& arr) {
+    if (arr.size() == 0) return nullptr;
+    ListNode* t = new ListNode{arr.at(0)};
+    ListNode* x = t;
+    for (int i = 1; i < arr.size(); ++i) {
+        x->next = new ListNode{arr.at(i)};
+        x = x->next;
+    }
+    return t;
+}
+
+void printList(ListNode* t) {
+    while (t!=nullptr) {
+        printf("%d->",t->val);
+        t = t->next;
+    }
+    printf("nullptr\n");
+}
+
+void destroyList(ListNode* t) {
+    while (t !=nullptr) {
+        delete t;
+        t = t->next;
+    }
+}
+
 unsigned int Factorial(unsigned int number) {
   return number > 1 ? Factorial(number - 1) * number : 1;
 }
