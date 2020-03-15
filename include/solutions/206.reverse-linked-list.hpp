@@ -52,5 +52,15 @@ public:
         }
         return r;
     }
+
+    /* This recurse method is from haoel-陈皓 */
+    /* https://github.com/haoel/leetcode/blob/master/algorithms/cpp/reverseLinkedList/reverseLinkedList.cpp */
+    ListNode* reverseListRec(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) return head;
+        ListNode* h = reverseListRec(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return h;
+    }
 };
 // @lc code=end

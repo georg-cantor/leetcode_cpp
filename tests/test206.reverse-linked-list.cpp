@@ -22,4 +22,11 @@ TEST_CASE("test 206.reverse-linked-list", "[206.reverse-linked-list]") {
     REQUIRE(list_to_vector(s.reverseList(build_from_vec(in3))) == ans3);
     REQUIRE(list_to_vector(s.reverseList(build_from_vec(in4))) == ans4);
     REQUIRE(list_to_vector(s.reverseList(build_from_vec(in5))) == ans5);
+
+    /* Below is the tests for recursive reverse */
+    REQUIRE(list_to_vector(s.reverseListRec(build_from_vec(in1))) == ans1);
+    REQUIRE(list_to_vector(s.reverseListRec(build_from_vec(in2))) == ans2);
+    REQUIRE(list_to_vector(s.reverseListRec(build_from_vec(in3))) == ans3);
+    REQUIRE(list_to_vector(s.reverseListRec(build_from_vec(in4))) == ans4);
+    REQUIRE(list_to_vector(s.reverseListRec(build_from_vec(in5))) == ans5);
 }
