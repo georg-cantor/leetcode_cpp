@@ -22,28 +22,36 @@ void printNode(int val, int h) {
 
 TreeNode* build_from_level_order(std::vector<int>& arr) {
   int n = arr.size();
-  if (n%2==0 && n != 0) arr.push_back(-1);
+  //if (n%2==0 && n != 0) arr.push_back(-1);
   std::queue<TreeNode *> q; // this is a queue of pointers to ~
 
   TreeNode* root = nullptr;
+  bool leftLeaf = false;
   for (int i = 0; i < n;) {
       if (arr[i]>0) {
           TreeNode* node = new TreeNode{arr[i]};
           if (root == nullptr)
               root = node;
-          else if (q.front()->left == nullptr)
+          else if (q.front()->left == nullptr && !leftLeaf) {
               q.front()->left = node;
-          else {
+              leftLeaf = true;
+          }
+          else if (q.front()->right == nullptr) {
               q.front()->right = node;
               q.pop();
+              leftLeaf = false;
           }
           q.push(node);
-          i += 1;
       }
       else {
-          if (!q.empty()) q.pop();
-          i += 2;
+          if (!leftLeaf) {
+              leftLeaf = true;
+          } else {
+              leftLeaf = false;
+              if (!q.empty()) q.pop();
+          }
       }
+      i+=1;
   }
   return root;
 }
