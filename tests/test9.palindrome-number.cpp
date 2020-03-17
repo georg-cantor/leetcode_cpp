@@ -5,6 +5,8 @@
 
 TEST_CASE("test 9.palindrome-number", "[9.palindrome-number]") {
     Solution s;
+    int in14 = 1000110001;
+    int in13 = 1001;
     int in0 = 1000021;
     int in1 = 12321;
     int in2 = 43234;
@@ -18,6 +20,8 @@ TEST_CASE("test 9.palindrome-number", "[9.palindrome-number]") {
     int in9 = 22;
     int in10 = 29;
     int in11 = -213321;
+    int ans14 = true;
+    int ans13 = true;
     int ans0 = false;
     int ans1 = true;
     int ans2 = true;
@@ -31,6 +35,8 @@ TEST_CASE("test 9.palindrome-number", "[9.palindrome-number]") {
     int ans10 = false;
     int ans11 = false;
     int ans12 = false;
+    REQUIRE(s.isPalindrome(in13) == ans13);
+    REQUIRE(s.isPalindrome(in14) == ans14);
     REQUIRE(s.isPalindrome(in0) == ans0);
     REQUIRE(s.isPalindrome(in1) == ans1);
     REQUIRE(s.isPalindrome(in2) == ans2);

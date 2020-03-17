@@ -55,34 +55,28 @@ public:
         else if (x < 10) return true;
         else if (x%10 == 0) return false;
         else {
+            int bits_num = count_bits(x);
+            //printf("bits_num: %d\n", bits_num);
             int y = x;
-            int decimal_bits = 0;
-            while (y!=0) {
-                decimal_bits++;
+            int half_revert = 0;
+            for (int i = 0; i < bits_num/2; i++) {
+                int r = y % 10;
                 y = y/10;
+                half_revert =half_revert*10 + r;
             }
-            printf("isPalindromeRec(%d, %d)\n", x, decimal_bits-2);
-            return isPalindromeRec(x, decimal_bits-2);
+            //printf("y: %d, half_revert: %d\n", y, half_revert);
+            if (y == half_revert || y/10 == half_revert) return true;
+            else return false;
         }
     }
-    bool isPalindromeRec(int x, int decimal_bits) {
-        if (x < 0) {
-            return false;
+private:
+    int count_bits(int x) {
+        int bits = 0;
+        while (x != 0) {
+            bits++;
+            x = x/10;
         }
-        else if (x < 10) {
-            return true;
-        } else if (x%10 == 0) {
-            return false;
-        } else {
-            int toMinus = 1;
-            int cal_bits = decimal_bits;
-            while (cal_bits != 0) {
-                toMinus *= 10;
-                cal_bits--;
-            }
-            printf("isPalindromeRec(%d, %d)\n", x/10 - ((x%10)*toMinus), decimal_bits-2);
-            return isPalindromeRec(x/10 - ((x%10)*toMinus), decimal_bits-2);
-        }
+        return bits;
     }
 };
 // @lc code=end
