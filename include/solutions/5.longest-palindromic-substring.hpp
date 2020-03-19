@@ -36,19 +36,47 @@
 // @lc code=start
 class Solution {
 public:
+    Solution(): table(1000,std::vector<bool>(1000, false)) {}
     std::string longestPalindrome(std::string s) {
         int len = s.size();
         if (len == 0 || len ==1) return s;
-        int found_len = 0;
-        std::string found{""};
+        int start = 0;
+        int end = 0;
         for (int i = 0; i < len; i++) {
-            for (int j = s.size()-1; j >= i; j--) {
-                if (isPalindrome(s.substr(i,j-i+1)) && j-i+1 > found.size()) {
-                    found = s.substr(i, j-i+1);
+            table[i][i] = true;
+            if ((i+1) < len) {
+                table[i][i+1] = (s[i] == s[i+1]) ? true : false;
+                if (table[i][i+1]) {
+                    start = i;
+                    end = i+1;
                 }
             }
         }
-        return found;
+        for (int total = 3; total <= len; total++) {
+            for (int i = 0; i < len-total+1; i++) {
+                int j = i+(total-1);
+                table[i][j] = (table[i+1][j-1] && (s[i] == s[j]));
+                if (table[i][j]) {
+                    start = i;
+                    end = j;
+                }
+            }
+        }
+        return s.substr(start, end-start+1);
+    }
+    std::string longestPalindrome1(std::string s) {
+        int len = s.size();
+        if (len == 0 || len ==1) return s;
+        for (int total = len; total > 0; total--) {
+            for (int i = 0; i < len; i++) {
+                int j = i + (total-1);
+                if (j >= len) break;
+                else if (isPalindrome(s.substr(i, total))) {
+                    return s.substr(i, total);
+                }
+            }
+        }
+        return s.substr(0,1);
     }
     bool isPalindrome(std::string s) {
         if (s.size() == 0) return true;
@@ -63,5 +91,7 @@ public:
         }
         return true;
     }
+private:
+    std::vector<std::vector<bool>> table;
 };
 // @lc code=end

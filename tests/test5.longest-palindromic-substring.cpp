@@ -16,10 +16,31 @@ TEST_CASE("test 5.longest-palindromic-substring", "[5.longest-palindromic-substr
     std::string in9 = "abacdfgdcaba";
     std::string in10 = "abb";
     std::string in11 =
-        "miycvxmqggnmmcwlmizfojwrurwhwygwfykyefxbgveixykdebenzitqnciigfjgrzzbtgeazyrbiirmejhdwcgjzwqolrturjlqpsgunuqerqjevbheblmbvgxyedxshswsokbhzapfuojgyfhctlaifrisgzqlczageirnukgnmnbwogknyyuynwsuwbumdmoqwxprykmazghcpmkdcjduepjmjdxrhvixxbfvhybjdpvwjbarmbqypsylgtzyuiqkexgvirzylydrhrmuwpmfkvqllqvekyojoacvyrzjevaupypfrdguhukzuqojolvycgpjaendfetkgtojepelhcltorueawwjpltehbbjrvznxhahtuaeuairvuklctuhcyzomwrrznrcqmovanxmiyilefybkbveesrxkmqrqkowyrimuejqtikcjfhizsmumajbqglxrvevexnleflocxoqgoyrzgqflwiknntdcykuvdcpzlakljidclhkllftxpinpvbngtexngdtntunzgahuvfnqjedcafzouopiixw";
+        "miycvxmqggnmmcwlmifojwrurwhwygwfykyefxbgveixykdebenzitqnc" \
+        "iigfjgrzzbtgeazyrbiirmejhdwcgjzwqolrturjlqpsgunuqerqjevbhebl" \
+        "bvgxyedxshswsokbhzapfuojgyfhctlaifrisgzqlczageirnukgnmnbwogkn" \
+        "yyuynwsuwbumdmoqwxprykmazghcpmkdcjduepjmjdxrhvixxbfvhybjdpvwjb" \
+        "armbqypsylgtzyuiqkexgvirzylydrhrmuwpmfkvqllqvekyojoacvyrzjevau" \
+        "pypfrdguhukzuqojolvycgpjaendfetkgtojepelhcltorueawwjpltehbbjrv" \
+        "znxhahtuaeuairvuklctuhcyzomwrrznrcqmovanxmiyilefybkbveesrxkmqr" \
+        "qkowyrimuejqtikcjfhizsmumajbqglxrvevexnleflocxoqgoyrzgqflwiknn" \
+        "dcykuvdcpzlakljidclhkllftxpinpvbngtexngdtntunzgahuvfnqjedcafzouopiixw";
+    std::string in12 =
+        "flsuqzhtcahnyickkgtfn$lyzwjuiwqiexthpzvcweqzeqpmqwkydhsfipcdrsjkefeh" \
+        "hesubkirhalgnevjugfohwnlhbjfewiunlgmomxkafuuokesvfmcnvseixkkzekuinmcbm" \
+        "ttzgsqeqbrtlwyqgiquyylaswlgfflrezaxtjobltcnpjsaslyviviosxorjsfncqirsjpk" \
+        "gajkfpoxxmvsyynbbovieoothpjgncfwcvpkvjcmrcuoronrfjcppbisqbzkgpnycqljpjl" \
+        "geciaqrnqyxzedzkqpqsszovkgtcgxqgkflpmrikksaupukdvkzbltvefitdegnlmzeirotr" \
+        "feaueqpzppnsjpspgomyezrlxsqlfcjrkglyvzvqakhtvfmeootbtbwfhqucbnuwznigoyatv" \
+        "kocqmbtqghybwrhmyvvuchjpvjckiryvjfxabezchynfxnpqaeampvaapgmvoylyutymdhvhq" \
+        "fmrlmzkhuhupizqiujpwzarnszrexpvgdmtoxvjygjpmiadzdcxtggwamkbwrkeplesupagie" \
+        "vwsaaletcuxtpsxmbmeztcylsjxvhzrqizdmgjfyftpzpgxateopwvynljzffszkzzqgofdlwy" \
+        "knqfruhdkvmvrrjpijcjomnrjjubfccaypkpfokohvkqndptciqqiscvmpozlyyrwobeuazsawt" \
+        "imnawquogrohcrnmexiwvjxgwhmtpykqlcfacuadyhaotmmxevqwarppknoxthsmrrknu";
     std::string ans1 = "amanaplanacanalpanama";
     std::string ans2 = "";
-    std::string ans3 = "bab";
+    std::string ans31 = "bab";
+    std::string ans32 = "aba";
     std::string ans4 = "normaisasselflessasiamron";
     std::string ans5 = "dertygytred";
     std::string ans6 = "alletsdellacalledstella";
@@ -28,9 +49,10 @@ TEST_CASE("test 5.longest-palindromic-substring", "[5.longest-palindromic-substr
     std::string ans9 = "aba";
     std::string ans10 = "bb";
     std::string ans11 = "vqllqv";
+    std::string ans12 = "ljpjl";
     REQUIRE(s.longestPalindrome(in1) == ans1);
     REQUIRE(s.longestPalindrome(in2) == ans2);
-    REQUIRE(s.longestPalindrome(in3) == ans3);
+    REQUIRE(s.longestPalindrome(in3) == ans32);
     REQUIRE(s.longestPalindrome(in4) == ans4);
     REQUIRE(s.longestPalindrome(in5) == ans5);
     REQUIRE(s.longestPalindrome(in6) == ans6);
@@ -39,4 +61,5 @@ TEST_CASE("test 5.longest-palindromic-substring", "[5.longest-palindromic-substr
     REQUIRE(s.longestPalindrome(in9) == ans9);
     REQUIRE(s.longestPalindrome(in10) == ans10);
     REQUIRE(s.longestPalindrome(in11) == ans11);
+    REQUIRE(s.longestPalindrome(in12) == ans12);
 }
