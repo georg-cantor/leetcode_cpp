@@ -5,6 +5,7 @@
 
 TEST_CASE("test 5.longest-palindromic-substring", "[5.longest-palindromic-substring]") {
     Solution s;
+    std::string in0 = "amnpcpnma";
     std::string in1 = "amanaplanacanalpanama";
     std::string in2 = "";
     std::string in3 = "babad";
@@ -37,6 +38,7 @@ TEST_CASE("test 5.longest-palindromic-substring", "[5.longest-palindromic-substr
         "vwsaaletcuxtpsxmbmeztcylsjxvhzrqizdmgjfyftpzpgxateopwvynljzffszkzzqgofdlwy" \
         "knqfruhdkvmvrrjpijcjomnrjjubfccaypkpfokohvkqndptciqqiscvmpozlyyrwobeuazsawt" \
         "imnawquogrohcrnmexiwvjxgwhmtpykqlcfacuadyhaotmmxevqwarppknoxthsmrrknu";
+    std::string ans0 = "amnpcpnma";
     std::string ans1 = "amanaplanacanalpanama";
     std::string ans2 = "";
     std::string ans31 = "bab";
@@ -50,9 +52,10 @@ TEST_CASE("test 5.longest-palindromic-substring", "[5.longest-palindromic-substr
     std::string ans10 = "bb";
     std::string ans11 = "vqllqv";
     std::string ans12 = "ljpjl";
+    REQUIRE(s.longestPalindrome(in0) == ans0);
     REQUIRE(s.longestPalindrome(in1) == ans1);
     REQUIRE(s.longestPalindrome(in2) == ans2);
-    REQUIRE(s.longestPalindrome(in3) == ans32);
+    REQUIRE(s.longestPalindrome(in3) == ans31);
     REQUIRE(s.longestPalindrome(in4) == ans4);
     REQUIRE(s.longestPalindrome(in5) == ans5);
     REQUIRE(s.longestPalindrome(in6) == ans6);
