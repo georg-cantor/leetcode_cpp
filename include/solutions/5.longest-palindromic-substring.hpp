@@ -40,7 +40,8 @@ public:
     Solution(): table(1000,std::vector<bool>(1000, false)) {}
 
     std::string longestPalindrome(std::string s) {
-        /* This is manacher's algorithms */
+        /* This is manacher's algorithms
+         * https://oi-wiki.org/string/manacher/ */
         int n = s.size();
         if (n == 0 || n == 1) return s;
         int start = 0, total = 1;
@@ -74,7 +75,8 @@ public:
     }
 
     std::string longestPalindrome4(std::string s) {
-        /* This is another implementation of manacher's algorithm */
+        /* This is another implementation of manacher's algorithm
+         * https://oi-wiki.org/string/manacher/ */
         int n = s.size();
         if (n == 0 || n == 1) return s;
         int start = 0;
@@ -118,7 +120,8 @@ public:
     }
 
     std::string longestPalindrome3(std::string s) {
-        /* 朴素算法 */
+        /* 朴素算法
+         * https://oi-wiki.org/string/manacher/ */
         int n = s.size();
         if (n == 0 || n == 1) return s;
         int start = 0;
