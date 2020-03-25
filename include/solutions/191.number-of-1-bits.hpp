@@ -69,7 +69,7 @@
 // @lc code=start
 class Solution {
 public:
-    int hammingWeight1(std::uint32_t n) {
+    int hammingWeight(std::uint32_t n) {
         int result = 0;
         for (int i = 0; i < 32; i++) {
             if ((n&1) == 1) {
