@@ -56,6 +56,11 @@ TreeNode* build_from_level_order(std::vector<int>& arr) {
   return root;
 }
 
+std::vector<int> tree_to_vector(TreeNode* root) {
+    std::vector<int> result{};
+    return result;
+}
+
 void destroyTree(TreeNode* root) {
     if (root == nullptr) return;
     destroyTree(root->left);

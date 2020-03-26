@@ -20,6 +20,7 @@ void printNode(int val, int h);
 void show(TreeNode* x, int h);
 
 TreeNode* build_from_level_order(std::vector<int>& arr);
+std::vector<int> tree_to_vector(TreeNode*);
 void destroyTree(TreeNode*);
 
 ListNode* build_from_vec(std::vector<int>& arr);
