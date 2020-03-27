@@ -13,6 +13,7 @@ TEST_CASE("Factorials are computed", "[factorial]") {
     std::vector<int> in3{1,2};
     std::vector<int> in4{1,-1,3,2};
     std::vector<int> in5{1,2,3,4,-1,5,6,-1,-1,-1,-1,7,8};
+    std::vector<int> in6{1, 3, 2, 5, 4, -1, -1, 7, 6, -1, -1, -1, -1, 9, 8};
     REQUIRE(Factorial(1) == 1);
     TreeNode* tree = build_from_level_order(in1);
     show(tree, 0);
@@ -36,6 +37,10 @@ TEST_CASE("Factorials are computed", "[factorial]") {
     destroyList(testList);
     std::cout << "============================================" << std::endl;
     tree = build_from_level_order(in4);
+    show(tree, 0);
+    destroyTree(tree);
+    std::cout << "============================================" << std::endl;
+    tree = build_from_level_order(in6);
     show(tree, 0);
     destroyTree(tree);
     /*

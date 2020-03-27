@@ -22,8 +22,7 @@ void printNode(int val, int h) {
 
 TreeNode* build_from_level_order(std::vector<int>& arr) {
   int n = arr.size();
-  //if (n%2==0 && n != 0) arr.push_back(-1);
-  std::queue<TreeNode *> q; // this is a queue of pointers to ~
+  std::queue<TreeNode *> q; // this is a queue of pointers to TreeNode*
 
   TreeNode* root = nullptr;
   bool leftLeaf = false;

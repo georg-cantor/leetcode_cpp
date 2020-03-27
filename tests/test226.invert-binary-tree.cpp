@@ -12,7 +12,7 @@ TEST_CASE("test 226.invert-binary-tree", "[226.invert-binary-tree]") {
     std::vector<int> in4{};
 
     std::vector<int> ans1{3,20,9,7,15};
-    std::vector<int> ans2{1,3,2,5,4,7,6,-1,-1,9,8};
+    std::vector<int> ans2{1,3,2,5,4,-1,-1,7,6,-1,-1,-1,-1,9,8};
     std::vector<int> ans3{1};
     std::vector<int> ans4{};
 
