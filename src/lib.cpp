@@ -58,6 +58,23 @@ TreeNode* build_from_level_order(std::vector<int>& arr) {
 
 std::vector<int> tree_to_vector(TreeNode* root) {
     std::vector<int> result{};
+    std::queue<TreeNode *> q;
+    q.push(root);
+    while (!q.empty()) {
+        TreeNode* t = q.front();
+        if (t != nullptr) {
+            result.push_back(t->val);
+            q.push(t->left);
+            q.push(t->right);
+            q.pop();
+        } else {
+            q.pop();
+            result.push_back(-1);
+        }
+    }
+    while (result.back() == -1) {
+        result.pop_back();
+    }
     return result;
 }
 

@@ -27,6 +27,7 @@ TEST_CASE("Factorials are computed", "[factorial]") {
     destroyTree(tree);
     std::cout << "============================================" << std::endl;
     tree = build_from_level_order(in5);
+    REQUIRE(tree_to_vector(tree) == in5);
     show(tree, 0);
     destroyTree(tree);
     std::cout << "============================================" << std::endl;
