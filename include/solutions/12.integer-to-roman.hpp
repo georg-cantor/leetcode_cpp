@@ -83,25 +83,25 @@
 // @lc code=start
 class Solution {
 public:
-    string intToRoman(int num) {
-        
+    Solution (): ints{{1,0},{4,1},{5,2},{9,3},{10,4},{40,5},{50,6},{90,7},{100,8},{400,9},{500,10},{900,11},{1000,12}},
+                romans{"I","IV","V","IX","X","XL","L","XC","C","CD","D","CM","M"} {}
+    std::string intToRoman(int num) {
+        std::string res{};
+        while (num != 0) {
+            auto it = ints.lower_bound(num);
+            if (it != ints.end() && it->first == num) {
+                res.append(romans[it->second]);
+                break;
+            } else {
+                it--;
+                num -= it->first;
+                res.append(romans[it->second]);
+            }
+        }
+        return res;
     }
 private:
-    std::map<std::string, int> romanMap;
-    void load_map() {
-        romanMap["I"] = 1;
-        romanMap["V"] = 5;
-        romanMap["X"] = 10;
-        romanMap["L"] = 50;
-        romanMap["C"] = 100;
-        romanMap["D"] = 500;
-        romanMap["M"] = 1000;
-        romanMap["IV"] = 4;
-        romanMap["IX"] = 9;
-        romanMap["XL"] = 40;
-        romanMap["XC"] = 90;
-        romanMap["CD"] = 400;
-        romanMap["CM"] = 900;
-  };
+    std::map<int,int> ints;
+    std::vector<std::string> romans;
 };
 // @lc code=end
