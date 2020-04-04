@@ -33,7 +33,7 @@
 // @lc code=start
 class Solution {
 public:
-    void moveZeroes(std::vector<int>& nums) {
+    void moveZeroes1(std::vector<int>& nums) {
         int len = nums.size();
         int zeros = 0;
         for (int i = len-1; i >= 0; --i) {
@@ -43,6 +43,26 @@ public:
                 }
                 zeros++;
             }
+        }
+    }
+    void moveZeroes2(std::vector<int>& nums) {
+        //int len = nums.size();
+        for (auto it{std::remove(nums.begin(), nums.end(), 0)}; it != nums.end(); ++it) {
+            *it = 0;
+        }
+    }
+
+    void moveZeroes(std::vector<int>& nums) {
+        int i=0,j=0;
+        while(j<nums.size()){
+            if(nums[j]!=0){
+                nums[i]=nums[j];
+                i++;
+            }
+            j++;
+        }
+        while(i<nums.size()){
+            nums[i++]=0;
         }
     }
 };
