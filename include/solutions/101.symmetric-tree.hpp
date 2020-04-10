@@ -57,7 +57,7 @@
 class Solution {
 public:
     bool isSymmetric(TreeNode* root) {
-        
+        return true;
     }
 };
 // @lc code=end
