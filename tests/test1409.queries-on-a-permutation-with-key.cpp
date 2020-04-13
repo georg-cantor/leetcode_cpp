@@ -5,6 +5,7 @@
 #include <catch2/catch.hpp>
 #include <vector>
 #include <list>
+#include <unordered_map>
 #include "solutions/1409.queries-on-a-permutation-with-key.hpp"
 
 TEST_CASE("test 1409. Queries on a Permutation With Key", "[1409. Queries on a Permutation With Key]") {
