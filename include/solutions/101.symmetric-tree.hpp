@@ -57,7 +57,22 @@
 class Solution {
 public:
     bool isSymmetric(TreeNode* root) {
-        return true;
+        if (root == nullptr) {
+            return true;
+        } else {
+            return isMirror(root->left, root->right);
+        }
+    }
+    bool isMirror(TreeNode* left, TreeNode* right) {
+        if (left == nullptr && right == nullptr) {
+            return true;
+        } else if (left == nullptr || right == nullptr) {
+            return false;
+        } else if (left->val != right->val) {
+            return false;
+        } else {
+            return isMirror(left->left, right->right) && isMirror(left->right, right->left);
+        }
     }
 };
 // @lc code=end
