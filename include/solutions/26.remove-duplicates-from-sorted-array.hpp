@@ -64,7 +64,7 @@
 // @lc code=start
 class Solution {
 public:
-    int removeDuplicates(std::vector<int>& nums) {
+    int removeDuplicates1(std::vector<int>& nums) {
         int len = nums.size();
         if (len == 0) {
           traceArr.resize(0);
@@ -87,6 +87,21 @@ public:
     }
     std::vector<int> getResult() {
         return traceArr;
+    }
+
+    int removeDuplicates(std::vector<int>& nums) {
+        int len = nums.size();
+        if (len <= 1) return len;
+        int current_pos = 1;
+        int current_val = nums[0];
+        for (int i = 1; i < len; ++i) {
+            if (nums[i] != current_val) {
+                current_val = nums[i];
+                nums[current_pos] = current_val;
+                current_pos++;
+            }
+        }
+        return current_pos;
     }
  private:
     std::vector<int> traceArr;
