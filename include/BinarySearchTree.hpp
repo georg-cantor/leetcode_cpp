@@ -9,9 +9,25 @@ template <typename Comparable>
 class BinarySearchTree {
 public:
     BinarySearchTree();
-    BinarySearchTree(const BinarySearchTree& rhs);
+    /***
+     * Copy Constructor
+     * @param rhs
+     */
+    BinarySearchTree(const BinarySearchTree& rhs) : root{nullptr} {
+        root = clone(rhs.root);
+    }
+
+    /***
+     *
+     * @param rhs
+     */
     BinarySearchTree(BinarySearchTree && rhs);
-    ~BinarySearchTree();
+    /***
+     * Destructor for the tree
+     */
+    ~BinarySearchTree() {
+        makeEmpty();
+    }
 
     const Comparable & findMin() const;
     const Comparable & findMax() const;
@@ -21,7 +37,9 @@ public:
     bool isEmpty() const;
     void printTree(ostream & out = cout) const;
 
-    void makeEmpty();
+    void makeEmpty() {
+        makeEmpty(root);
+    }
     void insert(const Comparable & x) {
         insert(x, root);
     }
@@ -116,9 +134,32 @@ private:
         else if (x > t->element) return contains(x, t->right);
         else return true; // Match with t->element;
     }
-    void makeEmpty(BinaryNode*& t);
+
+    /***
+     * Internal method to make subtree empty.
+    */
+    void makeEmpty(BinaryNode*& t) {
+        if (t != nullptr) {
+            makeEmpty(t->left);
+            makeEmpty(t->right);
+            delet t;
+        }
+        t = nullptr;
+    }
     void printTree(BinaryNode *t, ostream& out) const;
-    BinaryNode* clone(BonaryNode* t) const;
+
+    /***
+     * Internal method to clone subtree
+     * @param t
+     * @return
+     */
+    BinaryNode* clone(BonaryNode* t) const {
+        if (t ==nullptr) {
+            return nullptr;
+        } else {
+            return new BinaryNode{t->element, clone(t->left), clone(t->right)};
+        }
+    }
 };
 
 #endif //LEETCODE_CPP_INCLUDE_BINARYSEARCHTREE_HPP
