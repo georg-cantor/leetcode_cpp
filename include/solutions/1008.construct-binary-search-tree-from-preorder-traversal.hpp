@@ -56,24 +56,22 @@
 class Solution {
 public:
     TreeNode* bstFromPreorder(std::vector<int>& preorder) {
-        int n = preorder.size();
-        std::queue<TreeNode *> q;
-        TreeNode* root = nullptr;
-        for (int i = 0; i < n; ++i) {
-            TreeNode* node = new TreeNode{preorder[i]};
-            if (root == nullptr)
-                root = node;
-            else if (node->val < q.front()->val) {
-                q.front()->left = node;
+        TreeNode* root = new TreeNode(preorder[0]);
+        std::stack<TreeNode*> nodes;
+        nodes.push(root);
+        for (int i = 1; i < preorder.size(); ++i) {
+            TreeNode* node = new TreeNode(preorder[i]);
+            if (node->val < nodes.top()->val) {
+                nodes.top()->left = node;
             } else {
-                TreeNode* t;
-                while (!q.empty() && q.front()->val < node->val) {
-                    t = q.front();
-                    q.pop();
+                TreeNode* prev;
+                while (!nodes.empty() && nodes.top()->val < node->val) {
+                    prev = nodes.top();
+                    nodes.pop();
                 }
-                t->right = node;
+                prev->right = node;
             }
-            q.push(node);
+            nodes.push(node);
         }
         return root;
     }
