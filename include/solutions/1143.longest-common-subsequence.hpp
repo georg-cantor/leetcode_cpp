@@ -68,31 +68,17 @@ public:
     int longestCommonSubsequence(std::string text1, std::string text2) {
         int m = text1.size();
         int n = text2.size();
-        if (m > n) {
-            return longestCommonSubsequence(text2, text1);
-        }
-        //std::string res{};
-        int ans{0};
-        int cur_j = 0;
-        int i = 0;
-        int j = 0;
-
-        for (int i = 0; i < m;) {
-            for (j = cur_j; j < n;) {
-                if (text1[i] == text2[j]) {
-                    //res.push_back(text1[i]);
-                    ans++;
-                    i++;
-                    j++;
-                    cur_j = j;
+        std::vector<std::vector<short>> matrix(m+1, std::vector<short>(n+1, 0));
+        for (auto i = 1; i < m+1; ++i) {
+            for (auto j = 1; j < n+1; ++j) {
+                if (text1[i-1] == text2[j-1]) {
+                    matrix[i][j] = matrix[i-1][j-1] + 1;
                 } else {
-                    j++;
+                    matrix[i][j] = std::max(matrix[i-1][j], matrix[i][j-1]);
                 }
             }
-            i++;
         }
-        //return res;
-        return ans;
+        return matrix[m][n];
     }
 };
 // @lc code=end
