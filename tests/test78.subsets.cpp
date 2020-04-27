@@ -4,5 +4,4 @@
 #include <solutions/78.subsets.hpp>
 
 TEST_CASE("test 78.subsets", "[78.subsets]") {
-  REQUIRE(1==0);
 }

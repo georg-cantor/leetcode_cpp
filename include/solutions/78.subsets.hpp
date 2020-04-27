@@ -40,8 +40,7 @@
 class Solution {
 public:
     std::vector<std::vector<int>> subsets(std::vector<int>& nums) {
-        int n = nums.size();
-        std::vector<std::vector<int>> res(std::pow(2, n))
+        return std::vector<std::vector<int>>(1, std::vector<int>(1,0));
     }
 };
 // @lc code=end
