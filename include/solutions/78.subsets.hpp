@@ -40,7 +40,22 @@
 class Solution {
 public:
     std::vector<std::vector<int>> subsets(std::vector<int>& nums) {
-        return std::vector<std::vector<int>>(1, std::vector<int>(1,0));
+        int n = nums.size();
+        std::vector<std::vector<int>> res{};
+        unsigned long long total = std::pow(2, n);
+        for (unsigned long long i = 0; i < total; ++i) {
+            std::bitset<64> bs(i);
+            //std::cout << bs << std::endl;
+            std::vector<int> bs_to_subset{};
+            for (int j = 0; j < n; ++j) {
+                if (bs[j]) {
+                    bs_to_subset.push_back(nums[j]);
+                }
+            }
+            res.push_back(bs_to_subset);
+        }
+        return res;
     }
+
 };
 // @lc code=end
