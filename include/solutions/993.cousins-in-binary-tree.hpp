@@ -90,20 +90,36 @@ public:
         int depthY = depthOfNode(root, y, 0);
         int parentX = parentOfNode(root, x);
         int parentY = parentOfNode(root, y);
-
+        //printf("%d, %d, %d, %d\n", depthX, depthY, parentX, parentY);
+        return depthX != -1 && depthY != -1 && parentX != -1 && parentY != -1 && (depthX == depthY) && parentX != parentY;
     }
     int depthOfNode(TreeNode* node, int value, int depth) {
         if (node == nullptr) return -1;
-        else if (node->val = value) return depth;
+        else if (node->val == value) return depth;
         else return std::max(depthOfNode(node->left, value, depth+1), depthOfNode(node->right, value, depth+1));
     }
     int parentOfNode(TreeNode* node, int value) {
-        if (node->val == value) return -1;
-        else if (node->left != nullptr && node->left->val == value) {
-            return node->val;
-        } else if (node->right != nullptr && node->right->val == value) {
-            return node->val;
-        } else
+        if (node->left == nullptr && node->right == nullptr) {
+            return -1;
+        } else if (node->left != nullptr && node->right != nullptr) {
+            if (node->left->val == value || node->right->val == value) {
+                return node->val;
+            } else {
+                return std::max(parentOfNode(node->left, value), parentOfNode(node->right, value));
+            }
+        } else if (node->left != nullptr) {
+            if (node->left->val == value) {
+                return node->val;
+            } else {
+                return parentOfNode(node->left, value);
+            }
+        } else {
+            if (node->right->val == value) {
+                return node->val;
+            } else {
+                return parentOfNode(node->right, value);
+            }
+        }
     }
 };
 // @lc code=end
