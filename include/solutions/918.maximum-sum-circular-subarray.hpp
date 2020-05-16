@@ -98,6 +98,8 @@ public:
                 maxSum = curMax;
             }
             if (curMax < 0) {
+                i++;
+                curMax = 0;
                 continue;
             }
             for (int j = 1; j < len - 1; ++j) {
@@ -107,6 +109,7 @@ public:
                 }
                 if (curMax < 0) {
                     i = i + j + 1;
+                    curMax = 0;
                     break;
                 }
             }
