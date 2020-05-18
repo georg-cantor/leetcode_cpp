@@ -89,32 +89,15 @@
 class Solution {
 public:
     int maxSubarraySumCircular(std::vector<int>& A) {
-        int len = A.size();
-        int maxSum{std::numeric_limits<int>::min()};
-        int curMax{0};
-        for (int i = 0; i < len;) {
-            curMax = A[i];
-            if (curMax > maxSum) {
-                maxSum = curMax;
-            }
-            if (curMax < 0) {
-                i++;
-                curMax = 0;
-                continue;
-            }
-            for (int j = 1; j < len - 1; ++j) {
-                curMax += A[(i+j)%len];
-                if (curMax > maxSum) {
-                    maxSum = curMax;
-                }
-                if (curMax < 0) {
-                    i = i + j + 1;
-                    curMax = 0;
-                    break;
-                }
-            }
+        int sum = 0, mn = std::numeric_limits<int>::max(), mx = std::numeric_limits<int>::min(), curMax = 0, curMin = 0;
+        for (int num : A) {
+            curMin = std::min(curMin + num, num);
+            mn = std::min(mn, curMin);
+            curMax = std::max(curMax + num, num);
+            mx = std::max(mx, curMax);
+            sum += num;
         }
-        return maxSum;
+        return (sum - mn == 0) ? mx : std::max(mx, sum - mn);
     }
 };
 // @lc code=end
