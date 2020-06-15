@@ -60,42 +60,41 @@ class RandomizedSet {
 public:
     /** Initialize your data structure here. */
     RandomizedSet(): rndSet{}, iterMap{} {}
-    
+
     /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
     bool insert(int val) {
         if (iterMap.count(val)) {
             return false;
         }
-        auto pr = rnd.insert(val);
+        auto pr = rndSet.insert(val);
         if (pr.second) {
             iterMap[val] = pr.first;
         }
         return pr.second;
     }
-    
+
     /** Removes a value from the set. Returns true if the set contained the specified element. */
     bool remove(int val) {
         auto iter = iterMap.find(val);
         if (iter != iterMap.end()) {
-            auto it = rndSet.erase(iter);
+            auto it = rndSet.erase(iter->second);
             iterMap.erase(iter);
-            if (it != rndSet.end()) {
-                return true;
-            }
+            return true;
         }
         return false;
     }
-    
+
     /** Get a random element from the set. */
     int getRandom() {
         int rnd = std::rand() % rndSet.size();
-        auto it = rndSet.begin();
-        return it[rnd];
+        std::unordered_set<int>::const_iterator iter(rndSet.begin());
+        std::advance(iter, rnd);
+        return *iter;
     }
 
 private:
     std::unordered_set<int> rndSet;
-    std::unordered_map<int, std::unordered_set<int>::iterator> iterMap;
+    std::unordered_map<int, std::unordered_set<int>::const_iterator> iterMap;
 };
 
 /**
