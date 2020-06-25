@@ -45,7 +45,7 @@
 // @lc code=start
 class Solution {
 public:
-    int findDuplicate(std::vector<int>& nums) {
+    int findDuplicate1(std::vector<int>& nums) {
         int len = nums.size();
         std::sort(nums.begin(), nums.end());
         int lo = 0;
@@ -63,5 +63,24 @@ public:
         }
         return nums[mid];
     }
+
+    int findDuplicate(std::vector<int>& nums) {
+        int slow = 0;
+        int fast = 0;
+        while (true) {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+            if (slow == fast) {
+                break;
+            }
+        }
+        fast = 0;
+        while (fast != slow) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow;
+    }
+
 };
 // @lc code=end
